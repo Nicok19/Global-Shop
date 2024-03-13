@@ -1,0 +1,24 @@
+.footer{
+    width: 100%;
+    background-color: #4A4EF5;
+    height: 150px;
+
+}
+
+.footerElements{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.footerElements img{
+  width: 150px;  
+}
+
+.footerElements p{
+   color: white; 
+
+}
+

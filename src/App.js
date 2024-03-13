@@ -2,8 +2,8 @@ import React from "react";
 import { AppProvider } from "./AppContext";
 import Header from "./Header";
 import "./App.css";
-import CarouselImg from "./carousel";
 import SectionProducts from "./Products";
+import Footer from "./Footer";
 
 const App = () => {
   return (
@@ -11,9 +11,9 @@ const App = () => {
       <div>
         <div className="marginContainer">
           <Header />
-          <CarouselImg />
           <SectionProducts />
         </div>
+        <Footer/>
       </div>
     </AppProvider>
   );

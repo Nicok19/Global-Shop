@@ -60,14 +60,21 @@ const Products = () => {
 
     const categories = Array.from(new Set(products.map(product => product.category.name)));
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div className='loadingelement'>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
 
+    const handleImageError = (event) => {
+        event.target.src = 'https://i.imgur.com/qZx2cU5.jpg'; 
+    };
+
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    const maxPagesToShow = 10;
+
     return (
-        <div>
+        <div className='apiAndFliter'>
             <div className='filterMenu'>
                 <div className='searchElement'>
-                    <img src="/img/Mglass.png" alt="magnifying glass" />
+                    <img src="https://i.imgur.com/1jR01kG.jpg" alt="magnifying glass" />
                     <input
                         type="text"
                         placeholder="Search by products..."
@@ -92,7 +99,12 @@ const Products = () => {
                     currentProducts.map(product => (
                         <div className='allProducts' key={product.id}>
                             <p className='category'>{product.category.name}</p>
-                            {product.images.length > 0 && <img src={product.images[0]} alt={product.title} />} 
+                            {product.images.length > 0 && product.images[0] ? (
+                                <img src={product.images[0]} alt={product.title} onError={handleImageError} />
+                            ) : (
+                                <img src="https://i.imgur.com/Wr87vI8.jpg" alt="Default" />
+
+                            )}
                             <div className='product'>
                                 <h3>{product.title}</h3>
                             </div>
@@ -107,8 +119,8 @@ const Products = () => {
             </div>
 
             <div className='pagination'>
-                {Array.from({ length: Math.ceil(filteredProducts.length / productsPerPage) }, (_, index) => (
-                    <button className={currentPage === index + 1 ? 'paginationButton active' : 'paginationButton'} key={index} onClick={() => paginate(index + 1)}>
+                {Array.from({ length: Math.min(totalPages, maxPagesToShow) }, (_, index) => (
+                    <button className={currentPage === index + 1 ? 'paginationButton active' : 'paginationButton'} key={index + 1} onClick={() => paginate(index + 1)}>
                         {index + 1}
                     </button>
                 ))}
@@ -118,6 +130,8 @@ const Products = () => {
 };
 
 export default Products;
+
+
 
 
 

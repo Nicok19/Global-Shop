@@ -5,24 +5,7 @@ const Header = () => {
 
     return (
 <div className="menuElements">
-
-  <div className="logo">
-    <img src="/img/logoOriginal.png" alt="logo of the brand" />
-  </div>
-
-<div className="menuAndSearch">
-
-<nav className="menu">
-<a href="#">All models</a>
-<a href="#">Prices</a>
-<a href="#">sell your car</a>
-  </nav>
-
-
-</div>
-
-
-
+<img src="https://i.imgur.com/VduGXQy.jpg" alt="logo of the brand" />
 
 </div>
 
